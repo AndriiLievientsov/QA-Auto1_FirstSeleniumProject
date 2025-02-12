@@ -46,9 +46,54 @@ public class FindElementTests {
             System.out.println(element.getAttribute("href"));
             System.out.println(element.getText());
         }
-
-
     }
+
+    @Test
+    public void testFindElementsByLocation () {
+        //By.id
+        driver.findElement(By.id("dates"));
+        driver.findElement(By.cssSelector("#dates"));
+
+        //By.cssSelector
+        //ng-reflect-name="city" ==> [ng-reflect-name='city']
+        driver.findElement(By.cssSelector("[ng-reflect-name='city']"));
+
+        //By.className
+        //class="telephone" ==> .telephone
+        driver.findElement(By.className("telephone"));
+        WebElement telephone = driver.findElement(By.cssSelector(".telephone"));
+        System.out.println(telephone.getText());
+
+        //By.linkText
+        //a[ng-reflect-router-link='let-car-work']
+        WebElement letCarWork = driver.findElement(By.linkText("Let the car work"));
+        System.out.println(letCarWork.getText());
+
+        WebElement search = driver.findElement(By.linkText("Search"));
+        System.out.println(search.getText());
+
+        //By.partialLinkText
+        WebElement partialLinkText = driver.findElement(By.partialLinkText("work"));
+        System.out.println("Найдено по кусочку: "+ partialLinkText.getText());
+
+
+        //By.id
+        //#city
+        driver.findElement(By.cssSelector("input[id='city'"));
+        driver.findElement(By.cssSelector("input[id^='ci'"));
+        driver.findElement(By.cssSelector("input[id$='ty'"));
+        WebElement city = driver.findElement(By.id("city"));
+
+        System.out.println(city.getAttribute("type"));
+        System.out.println(city.getAttribute("id"));
+        System.out.println(city.getAttribute("ng-reflect-label"));
+
+
+        System.out.println("\nПока что все ХОРОШО!");
+    }
+
+
+
 
 
     @AfterMethod (enabled = true)
