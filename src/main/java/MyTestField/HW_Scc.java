@@ -23,7 +23,12 @@ public class HW_Scc {
 
     @Test
     public void FindSccBy () {
-       //a[ng-reflect-router-link='login']
+
+        //просто выбираем элемент. смотрим класс в и через точку указываем, тут было class="feedback-date"
+        WebElement element = driver.findElement(By.cssSelector(".feedback-date"));
+        System.out.println("Нулевой: " + element.getText() + "\n");
+
+        //a[ng-reflect-router-link='login']
         WebElement scc1 = driver.findElement(By.cssSelector("[ng-reflect-router-link='login']"));
         System.out.println("Первый: " + scc1.getText() + "\n");
 
