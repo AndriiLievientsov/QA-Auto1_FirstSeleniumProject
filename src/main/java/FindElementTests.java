@@ -92,6 +92,27 @@ public class FindElementTests {
         System.out.println("\nПока что все ХОРОШО!");
     }
 
+    @Test
+    public void siblingTest () {
+        driver.findElement(By.xpath("//a[text()=' Let the car work ']/preceding::*"));
+        driver.findElement(By.xpath("//a[text()=' Let the car work ']/preceding::link[2]"));
+        driver.findElement(By.xpath("//a[text()=' Let the car work ']/following::*"));
+        driver.findElement(By.xpath("//a[text()=' Let the car work ']/preceding-sibling::*[1]"));
+        System.out.println("Тест вроде успешно завершен");
+    }
+
+    @Test
+    public void siblingTest2 () {
+        System.out.println("------------" + "\n" +
+                "Старт Теста" + "\n"); // в ide был ворнинг из за не совместимости версий. пофиксить не смог. по этому разрграничил
+
+        driver.get("https://ilcarro.web.app/search");
+        driver.findElement(By.xpath("//*[@class='action' and text()='Affordable prices']"));
+        driver.findElement(By.xpath("//span[@class='action' and text()='Affordable prices']")); //строе соответствие
+        driver.findElement(By.xpath("//span[contains (@class,'action') and contains (text(),'Affordable prices'])")); // содержит что то из элемента
+
+        System.out.println("Тест вроде успешно завершен");
+    }
 
 
 
